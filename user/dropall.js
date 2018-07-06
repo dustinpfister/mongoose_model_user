@@ -21,7 +21,6 @@ require('./connect')(require('../conf.json')).then(function (mongoose) {
 
 }).catch (function (e) {
 
-    console.log('ahh man.');
-    console.log(e.message);
+    console.log(e);
 
 });

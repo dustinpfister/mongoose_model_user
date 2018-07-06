@@ -11,25 +11,13 @@ db = conn.getDB('mongoose_users');
 user = db.getUser('dustin');
 
 // if we do not have the user, create the user
-if (!user) {
+if (user) {
 
     // then create the user
-    db.createUser({
-        user: 'dustin',
-        pwd: '1234',
-        roles: [{
-                role: 'dbOwner',
-                db: 'mongoose_users'
-            }
-        ]
-    });
+    db.dropUser('dustin');
 
 } else {
 
-    // the user exists, print info.
-    printjson({
-        "dbName": db.getName(),
-        "adminUser": user
-    });
+    print('the user is not there to drop');
 
 }

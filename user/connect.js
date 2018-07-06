@@ -51,10 +51,6 @@ module.exports = function (options, cb) {
 
         });
 
-    }).catch(()=>{
-		
-		return
-		
-	});
+    });
 
 };
