@@ -1,5 +1,5 @@
 // connect to mongodb with mongoose, and then return mongoose
-module.exports = function (options, cb) {
+module.exports = (options, cb) => {
 
     // grab mongoose
     let mongoose = require('mongoose');
@@ -28,12 +28,14 @@ module.exports = function (options, cb) {
     mongoURL.url = 'mongodb://' + logStr + mongoURL.host + ':' + mongoURL.port + '/' + mongoURL.db;
 
     // make a connection to mongoDB
-    mongoose.connect(mongoURL.url,{ useNewUrlParser: true });
+    mongoose.connect(mongoURL.url, {
+        useNewUrlParser: true
+    });
 
     // ref mongoose.connection
     let db = mongoose.connection;
 
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) => {
 
         // on error
         db.on('error', (e) => {
@@ -44,7 +46,7 @@ module.exports = function (options, cb) {
         });
 
         // once the database is open
-        db.once('open', function () {
+        db.once('open', () => {
 
             // resolve with mongoose
             resolve(mongoose);
