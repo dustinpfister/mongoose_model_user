@@ -1,11 +1,19 @@
 // create a Mongo instance
-conn = new Mongo();
+var conn = new Mongo(),
 
 // get the database
-db = conn.getDB('mongoose_users');
+db = conn.getDB('mongoose_users'),
 
 // get the user if it is there
-user = db.getUser('dustin');
+user = db.getUser('dustin'),
+
+auth = auth || null;
+
+if (auth) {
+
+    db.auth(auth.username, auth.password);
+
+}
 
 // if we do not have the user, create the user
 if (!user) {

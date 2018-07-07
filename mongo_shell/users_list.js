@@ -1,8 +1,16 @@
 // create a Mongo instance
-conn = new Mongo();
+var conn = new Mongo(),
 
 // get the database
-db = conn.getDB('mongoose_users');
+db = conn.getDB('mongoose_users'),
+
+auth = auth || null;
+
+if (auth) {
+
+    db.auth(auth.username, auth.password);
+
+}
 
 // the user info.
 printjson({
