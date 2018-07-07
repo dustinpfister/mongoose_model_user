@@ -1,13 +1,10 @@
 // create a Mongo instance
 conn = new Mongo();
 
-// get the admin db
+// get the database
 db = conn.getDB('mongoose_users');
 
-// authenticate
-//db.auth('mrSmith', '1234');
-
-// if the admin account exists get it, or null
+// get the user if it is there
 user = db.getUser('dustin');
 
 // if we do not have the user, create the user
