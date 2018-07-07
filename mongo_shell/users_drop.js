@@ -1,23 +1,21 @@
 // create a Mongo instance
 conn = new Mongo();
 
-// get the admin db
+// get database
 db = conn.getDB('mongoose_users');
 
-// authenticate
-//db.auth('mrSmith', '1234');
-
-// if the admin account exists get it, or null
+// get the user
 user = db.getUser('dustin');
 
-// if we do not have the user, create the user
+// if we have the user drop them
 if (user) {
 
-    // then create the user
+    // drop the user
     db.dropUser('dustin');
 
 } else {
 
+    // the user is not there to drop
     print('the user is not there to drop');
 
 }
